@@ -9,7 +9,7 @@ RUN apk --update add \
   && : adding gnuplot for graphing \
   && apk add gnuplot \
     --update-cache \
-    --repository http://dl-3.alpinelinux.org/alpine/edge/testing/
+    --repository http://dl-3.alpinelinux.org/alpine/edge/community/
 
 ENV TSDB_VERSION 2.2.0
 ENV HBASE_VERSION 1.1.3
@@ -55,6 +55,7 @@ RUN wget -O hbase-${HBASE_VERSION}.bin.tar.gz http://archive.apache.org/dist/hba
 
 ADD docker/hbase-site.xml /opt/hbase/conf/
 ADD docker/start_opentsdb.sh /opt/bin/
+ADD docker/opentsdb.conf /opt/opentsdb/
 ADD docker/create_tsdb_tables.sh /opt/bin/
 ADD docker/start_hbase.sh /opt/bin/
 
